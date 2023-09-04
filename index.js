@@ -22,6 +22,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const { default: mongoose } = require('mongoose');
 // const multer = require("multer");
+mongoose.set('strictQuery', false)
 dbconnect();
 
 app.use(morgan("dev"));
