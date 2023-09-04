@@ -1,10 +1,9 @@
 const express = require('express');
-const mongoose =require("mongoose")
 const dbconnect = require('./config/dbconnect');
 const app = express()
 const dotenv = require('dotenv').config()
 const PORT = process.env.PORT || 2000;
-mongoose.set('strictQuery', false)
+
 const authRouter = require("./routes/authRoutes");
 const registercompanyRouter = require("./routes/registercompanyRouter");
 const postingjobRouter = require("./routes/postingjobRouter");
