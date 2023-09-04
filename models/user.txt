@@ -1,0 +1,181 @@
+// Erase if already required
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const crypto = require("crypto");
+
+// Declare the Schema of the Mongo model
+var userSchema = new mongoose.Schema(
+    {
+        user_auth_details: {
+            firstName: {
+                type: String,
+                required: true,
+            },
+            lastName: {
+                type: String,
+                required: true,
+            },
+            email: {
+                type: String,
+            },
+            mobile: {
+                type: String,
+            },
+            password: {
+                type: String,
+                required: true,
+            },
+        },
+        role: {
+            type: {
+                type: String,
+                enum: ["artist", "recruiter"],
+            },
+            user_details: {
+                profile_picture: {
+                    type: String,
+                    default: "https://plus.unsplash.com/premium_photo-1678853633562-74721c38552b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                },
+                gender: {
+                    type: String,
+                    enum: ["Male", "Female"],
+                },
+                i_am: {
+                    type: String,
+                    enum: ["Experienced", "Fresher"],
+                },
+                firstName: {
+                    type: String,
+                },
+                lastName: {
+                    type: String,
+                },
+                email: {
+                    type: String,
+                },
+                date_of_birth: {
+                    type: Date,
+                },
+            },
+            candidate_bio: {
+                bio: {
+                    type: String,
+                },
+            },
+            highest_education: {
+                institute_name: {
+                    type: String,
+    
+                },
+                education_level_and_degree: {
+                    type: String,
+                    enum: ["Doctorate", "Post-Graduation", "Graduation/Diploma", "Higher-Secondary", "School"],
+                },
+                education_period: {
+                    start: {
+                        type: Date
+                    },
+                    end: {
+                        type: Date
+                    }
+                }
+            },
+            job_preference: {
+                job_type: {
+                    type: String,
+                    enum: ["Full-Time", "Part-Time", "Contract", "Freelance", "Temporary", "Remote"],
+                },
+                functional_area: {
+                    type: String,
+    
+                },
+                preferred_city: {
+                    type: String,
+    
+                },
+                expected_salary: {
+                    type: String,
+                },
+            },
+    
+            work_experience: {
+                company_name: {
+                    type: String,
+                },
+                industry: {
+                    type: String
+                },
+                start_end_time: {
+                    start: {
+                        type: Date
+                    },
+                    end: {
+                        type: Date
+                    }
+                },
+                functional_area: {
+                    type: String,
+                },
+                my_designation: {
+                    type: String,
+                },
+                department: {
+                    type: String,
+                },
+                this_internship: {
+                    type: Boolean,
+                    default: false,
+                }
+            },
+            candidate_portfolio_link: {
+                portfolio_link: {
+                    type: String,
+                }
+            },
+            Upload_resume: {
+                upload_phone: {
+                    type: String,
+                },
+            },
+            isBlocked: {
+                type: Boolean,
+                default: false,
+            },
+            refreshToken: {
+                type: String,
+            },
+        },
+        
+
+        passwordChangedAt: Date,
+        passwordResetToken: String,
+        passwordResetExpires: Date,
+    },
+    {
+        timestamps: true,
+    }
+);
+
+
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        next();
+    }
+    const salt = await bcrypt.genSaltSync(10);
+    this.password = await bcrypt.hash(this.password, salt)
+});
+userSchema.methods.isPasswordMatched = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
+userSchema.methods.createPasswordResetToken = async function () {
+    const resettoken = crypto.randomBytes(32).toString("hex");
+    this.passwordResetToken = crypto.
+        createHash('sha256').
+        update(resettoken).
+        digest("hex");
+    this.passwordResetExpires = Date.now() + 30 * 60 * 1000; // 10 minutes
+    return resettoken;
+};
+
+//Export the model
+module.exports = mongoose.model('User', userSchema);

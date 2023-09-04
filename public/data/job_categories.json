@@ -1,0 +1,111 @@
+[
+    {
+        "category": "IT",
+        "sub_categories": [
+            "JavaScript",
+            "React Native",
+            "Android Enginner",
+            "COCOS2DX",
+            "Dart Enginner",
+            "Flutter",
+            "Nodejs",
+            "Nextjs",
+            "Aws",
+            "Python"
+        ]
+    },
+    {
+        "category": "Sales & BD",
+        "sub_categories": [
+            "Sales Director",
+            "Commercial Director",
+            "Sales Team Manager",
+            "Sales Manager",
+            "Sales Agent",
+            "Sales Executive",
+            "Sales Operation",
+            "Creditcard Salesman",
+            "LIC Agent",
+            "Content Sales"
+        ]
+    },
+    {
+        "category": "Marketing",
+        "sub_categories": [
+            "Advertising Creative",
+            "Product Branding",
+            "Branding & Advertising",
+            "Product launch promotion",
+            "Advertising Assitant",
+            "Marketing Director",
+            "App Marketing",
+            "Social Media Influencer"
+        ]
+    },
+    {
+        "category": "Operations",
+        "sub_categories": [
+            "OPeration Manager",
+            "Post-sales service",
+            "Operations Executive",
+            "Area Operations Manager"
+        ]
+    },
+    {
+        "category": "Finance",
+        "sub_categories": [
+            "Bank Manager",
+            "Bank Teller",
+            "Internet Banking Manager",
+            "Insurance Analyst",
+            "Accountant",
+            "GST Manager",
+            "Cashier",
+            "Risk Control Manager"
+        ]
+    },
+    {
+        "category": "Design",
+        "sub_categories": [
+            "Visual Designer",
+            "Graphic Designer",
+            "Logo Designer",
+            "Architecture Designer",
+            "Exhibition Design"
+        ]
+    },
+    {
+        "category": "Education/Traning",
+        "sub_categories": [
+            "Coordinator",
+            "Conselor",
+            "Librarian",
+            "Atheltic Coach",
+            "Trainer",
+            "Trainer",
+            "C Traning Instructor",
+            "Tacher/Professsor",
+            "English Teacher"
+        ]
+    },
+    {
+        "category": "Healthcare",
+        "sub_categories": [
+            "Doctor",
+            "Cosmetic Doctor",
+            "Dentist",
+            "Head Nurse"
+        ]
+    },
+    {
+        "category": "Real Estate/ Construction",
+        "sub_categories": [
+            "Lead Real Estate",
+            "Real Estate Project Manager",
+            "Garden Design",
+            "Real Estate Broker",
+            "Pre-Settlement"
+        ]
+    }
+  
+]
