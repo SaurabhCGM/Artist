@@ -1,8 +1,10 @@
 const express = require('express');
+const mongoose =require("mongoose")
 const dbconnect = require('./config/dbconnect');
 const app = express()
 const dotenv = require('dotenv').config()
 const PORT = process.env.PORT || 2000;
+mongoose.set('strictQuery', false)
 const authRouter = require("./routes/authRoutes");
 const registercompanyRouter = require("./routes/registercompanyRouter");
 const postingjobRouter = require("./routes/postingjobRouter");
@@ -19,6 +21,7 @@ const bodyParser = require('body-parser');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const { default: mongoose } = require('mongoose');
 // const multer = require("multer");
 dbconnect();
 
